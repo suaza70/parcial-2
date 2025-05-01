@@ -1,0 +1,52 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("ingrese la cantidad de elementos: ");
+        int cantidad = int.Parse(Console.ReadLine());
+
+        string[] arreglo = new string[cantidad];
+
+        for (int i = 0; i < cantidad; i++)
+        {
+            Console.Write("ingrese el elemento: " + (i + 1) + ": ");
+            arreglo[i] = Console.ReadLine();
+        }
+
+        Console.WriteLine("");
+        Console.WriteLine("arreglo original:");
+        MostrarArray(arreglo);
+
+        string[] invertido = InvertirArray(arreglo);
+
+        Console.WriteLine("");
+        Console.WriteLine("arreglo invertido:");
+        MostrarArray(invertido);
+    }
+
+    static string[] InvertirArray(string[] original)
+    {
+        string[] resultado = new string[original.Length];
+        for (int i = 0; i < original.Length; i++)
+        {
+            resultado[i] = original[original.Length - 1 - i];
+        }
+        return resultado;
+    }
+
+    static void MostrarArray(string[] array)
+    {
+        Console.Write("[");
+        for (int i = 0; i < array.Length; i++)
+        {
+            Console.Write("\"" + array[i] + "\"");
+            if (i < array.Length - 1)
+            {
+                Console.Write(", ");
+            }
+        }
+        Console.WriteLine("]");
+    }
+}
